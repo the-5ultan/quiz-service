@@ -1,9 +1,9 @@
-package com.practice.quizora.controllers;
+package com.quizora.quiz_service.controllers;
 
-import com.practice.quizora.enums.Category;
-import com.practice.quizora.models.QuestionWrapper;
-import com.practice.quizora.models.Response;
-import com.practice.quizora.services.QuizService;
+import com.quizora.quiz_service.enums.Category;
+import com.quizora.quiz_service.models.QuestionWrapper;
+import com.quizora.quiz_service.models.Response;
+import com.quizora.quiz_service.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

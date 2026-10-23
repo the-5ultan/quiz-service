@@ -1,4 +1,4 @@
-package com.practice.quizora.models;
+package com.quizora.quiz_service.models;
 
 import lombok.Data;
 

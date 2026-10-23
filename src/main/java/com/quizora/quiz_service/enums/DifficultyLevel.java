@@ -1,4 +1,4 @@
-package com.practice.quizora.enums;
+package com.quizora.quiz_service.enums;
 
 public enum DifficultyLevel {
     Easy,

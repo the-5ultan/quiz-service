@@ -1,17 +1,15 @@
-package com.practice.quizora.services;
+package com.quizora.quiz_service.services;
 
-import com.practice.quizora.enums.Category;
-import com.practice.quizora.models.Question;
-import com.practice.quizora.models.QuestionWrapper;
-import com.practice.quizora.models.Quiz;
-import com.practice.quizora.models.Response;
-import com.practice.quizora.repositories.QuestionRepository;
-import com.practice.quizora.repositories.QuizRepository;
+import com.quizora.quiz_service.enums.Category;
+import com.quizora.quiz_service.models.Question;
+import com.quizora.quiz_service.models.QuestionWrapper;
+import com.quizora.quiz_service.models.Quiz;
+import com.quizora.quiz_service.models.Response;
+import com.quizora.quiz_service.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
