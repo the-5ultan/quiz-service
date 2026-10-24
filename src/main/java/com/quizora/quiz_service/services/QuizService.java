@@ -1,7 +1,6 @@
 package com.quizora.quiz_service.services;
 
 import com.quizora.quiz_service.enums.Category;
-import com.quizora.quiz_service.models.Question;
 import com.quizora.quiz_service.models.QuestionWrapper;
 import com.quizora.quiz_service.models.Quiz;
 import com.quizora.quiz_service.models.Response;
@@ -20,15 +19,10 @@ public class QuizService {
     @Autowired
     QuizRepository quizRepository;
 
-    @Autowired
-    QuestionRepository questionRepository;
-
     public ResponseEntity<String> create(Category category, int NumQ, String title){
         try {
-            List<Question> questions = questionRepository.createQuizRandomly(category.name(),NumQ);
             Quiz quiz = new Quiz();
             quiz.setTitle(title);
-            quiz.setQuestions(questions);
             quizRepository.save(quiz);
             return new  ResponseEntity<>("Quiz created successfully", HttpStatus.CREATED);
 
