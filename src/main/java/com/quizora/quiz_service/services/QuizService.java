@@ -43,7 +43,7 @@ public class QuizService {
             Optional<Quiz> quiz = quizRepository.findById(id);
             List<QuestionWrapper> questions = quiz.get().getQuestions();
             List<QuestionWrapper> questionWrappers = new ArrayList<>();
-            for (Question question : questions) {
+            for (QuestionWrapper question : questions) {
                 QuestionWrapper questionWrapper = new QuestionWrapper(question.getId(),question.getQuestionTitle(),question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4());
                 questionWrappers.add(questionWrapper);
             }
