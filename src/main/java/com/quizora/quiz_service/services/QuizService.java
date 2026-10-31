@@ -41,12 +41,14 @@ public class QuizService {
     public ResponseEntity<List<QuestionWrapper>> getQuizById(int id) {
         try {
             Optional<Quiz> quiz = quizRepository.findById(id);
-            List<QuestionWrapper> questions = quiz.get().getQuestions();
+            List<Integer> questions = quiz.get().getQuestionIds();
             List<QuestionWrapper> questionWrappers = new ArrayList<>();
-            for (QuestionWrapper question : questions) {
-                QuestionWrapper questionWrapper = new QuestionWrapper(question.getId(),question.getQuestionTitle(),question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4());
-                questionWrappers.add(questionWrapper);
-            }
+//            for (int i : questions) {
+//                QuestionWrapper questionWrapper = quizInterface.getQuestionsById(i);
+////                QuestionWrapper questionWrapper = new QuestionWrapper(question.getId(),question.getQuestionTitle(),question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4());
+//                questionWrappers.add(questionWrapper);
+//            }
+            questionWrappers = quizInterface.getQuestionsById(questions).getBody();
             return new ResponseEntity<>(questionWrappers,HttpStatus.ACCEPTED);
         }catch (Exception e){
             e.printStackTrace();
@@ -58,14 +60,14 @@ public class QuizService {
     public ResponseEntity<String> calculateResult(int id, List<Response> responses) {
         try {
             Optional<Quiz> quiz = quizRepository.findById(id);
-            List<Question> questions = quiz.get().getQuestions();
-            int score = 0;
-            for(int i = 0; i < responses.size(); i++){
-                if(questions.get(i).getRightOption().equals(responses.get(i).getAnswer())){
-                    score++;
-                }
-            }
-            return new ResponseEntity<>(score+"",HttpStatus.ACCEPTED);
+
+
+//            for(int i = 0; i < responses.size(); i++){
+//                if(questions.get(i).getRightOption().equals(responses.get(i).getAnswer())){
+//                    score++;
+//                }
+//            }
+            return new ResponseEntity<>(quizInterface.calculateScore(responses)+"",HttpStatus.ACCEPTED);
         }catch (Exception e){
             e.printStackTrace();
             return new  ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
