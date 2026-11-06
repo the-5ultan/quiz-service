@@ -60,14 +60,8 @@ public class QuizService {
     public ResponseEntity<String> calculateResult(int id, List<Response> responses) {
         try {
             Optional<Quiz> quiz = quizRepository.findById(id);
-
-
-//            for(int i = 0; i < responses.size(); i++){
-//                if(questions.get(i).getRightOption().equals(responses.get(i).getAnswer())){
-//                    score++;
-//                }
-//            }
-            return new ResponseEntity<>(quizInterface.calculateScore(responses)+"",HttpStatus.ACCEPTED);
+            int score = quizInterface.calculateScore(responses).getBody();
+            return new ResponseEntity<>("score "+score,HttpStatus.ACCEPTED);
         }catch (Exception e){
             e.printStackTrace();
             return new  ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
