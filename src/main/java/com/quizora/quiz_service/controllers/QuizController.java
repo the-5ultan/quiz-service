@@ -2,6 +2,7 @@ package com.quizora.quiz_service.controllers;
 
 import com.quizora.quiz_service.enums.Category;
 import com.quizora.quiz_service.models.QuestionWrapper;
+import com.quizora.quiz_service.models.QuizCreateRequest;
 import com.quizora.quiz_service.models.Response;
 import com.quizora.quiz_service.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class QuizController {
     QuizService quizService;
 
     @PostMapping(path="create")// The catagory down bellow can be changed to String this will also reduce some lines of code
-    public ResponseEntity<String> createQuiz(@RequestParam Category category, @RequestParam int numQ, @RequestParam String title){
-        return quizService.create(category, numQ, title);
+    public ResponseEntity<String> createQuiz(@RequestBody QuizCreateRequest quizCreateRequest){
+        return quizService.create(quizCreateRequest.getCategory(), quizCreateRequest.getNumQ(), quizCreateRequest.getTitle());
     }
 
     @GetMapping(path="get/{id}")
